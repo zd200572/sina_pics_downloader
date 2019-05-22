@@ -18,23 +18,7 @@ init
 python3代码
 遇到了点墙，主要是python3和python2的区别导致的，经过搜索后解决了。ps.python3需要导入urllib.request并且用也这样用。
 
-# -*- coding: utf-8 -*-
-import os 
-import time
-import urllib.request
 
-def get_pics():
-    with open('博客相册图片列表.xml', encoding='utf-8') as f:
-        for line in f:
-            if 'pic_' in line:
-                url = line.strip().split('>')[1].split('690')[0]
-                #print(url)
-                file_name = url.split('sinaimg.cn/orignal/')[1].split('&amp')[0] + '.jpg'
-                print('我在下载%s' % file_name)
-                urllib.request.urlretrieve(url, file_name)
-                time.sleep(6)
-
-get_pics()
 然后，下载cxfreeze，打包
 pip install cx_Freeze
 然后找到这个库的绝对路径，一般是Python安装路径下面的Scripts文件夹（比如：D:\Python34\Scripts），然后打开cmd/powershell来直接调用。
